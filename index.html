@@ -1,13 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width= , initial-scale=1.0">
     <title>Youtube 2.0</title>
+    <!-- Tailwind Css -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Tailwind Css -->
 </head>
+
 <body>
-    
+
+    <!-- Header Area  -->
+    <header class=" shadow-sm">
+        <div class="navbar bg-base-100 max-w-6xl mx-auto">
+            <div class="navbar-start">
+                <div class="dropdown">
+                    <img class="w-[100px]" src="assets/logo.webp" alt="">
+                </div>
+            </div>
+            <div class="navbar-center">
+                <a class=" btn-ghost text-xl">Sort By Name</a>
+            </div>
+            <div class="navbar-end">
+
+                <button class="btn btn-ghost text-white btn-lg bg-[#FF1F3D]">Blog's</button>
+            </div>
+        </div>
+    </header>
+    <!-- Header Area  -->
+
+    <!-- Main Area -->
+    <main class="max-w-6xl mx-auto">
+        <div class="category-btn my-5 text-center">
+            <button class="btn btn-ghost bg-[#ddd] hover:bg-[#FF1F3D] hover:text-white">All</button>
+            <button class="btn btn-ghost bg-[#ddd]">Blog's</button>
+            <button class="btn btn-ghost bg-[#ddd]">Blog's</button>
+            <button class="btn btn-ghost bg-[#ddd]">Blog's</button>
+        </div>
+
+
+        <!-- Content Area -->
+        <section class="grid grid-cols-4 gap-5">
+
+            <div class="card bg-base-100  shadow-sm">
+                <figure>
+                    <img class="h-[150px] w-full object-cover" src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Shoes" />
+                </figure>
+                <div class="py-5 px-3">
+                   
+                    <div class="flex gap-3">
+                        <div class="avatar">
+                            <div class="ring-primary ring-offset-base-100 w-[30px] h-[30px]  rounded-full ring ring-offset-2">
+                              <img class="" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                            </div>
+                        </div>
+                          <div>
+                              <h3 class="text-sm font-semibold">Building a Winning UX Strategy Using the Kano Model </h3>
+                              <div class="author flex gap-1">
+                                <span class="text-sm">Lorem Ipsum</span>
+                                <img class="w-5 h-5" src="assets/verified.png" alt="">
+                             </div>
+
+                             <div>
+                                <span class="text-gray-400 text-sm">91K views</span>
+                             </div>
+                          </div>
+                    </div>
+
+                    
+                   
+                </div>
+            </div>
+        </section>
+        <!-- Content Area -->
+
+    </main>
+    <!-- Main Area -->
+
+
 
     <script src="js/main.js"></script>
 </body>
+
 </html>
