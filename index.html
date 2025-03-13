@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="overflow-y-scroll">
 
 <head>
     <meta charset="UTF-8">
@@ -10,7 +10,12 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- Tailwind Css -->
 </head>
-
+ <style>
+    .active {
+        background-color: #FF1F3D ;
+        color: white;
+    }
+ </style>
 <body>
 
     <!-- Header Area  -->
@@ -35,7 +40,7 @@
     <!-- Main Area -->
     <main class="max-w-6xl mx-auto">
         <div id="category-wrapper" class="category-btn my-5 flex justify-center gap-3">
-          <div>  <button class="btn btn-ghost bg-[#ddd] hover:bg-[#FF1F3D] hover:text-white">All</button></div>
+          <div>  <button id="all" onclick="fetchVideos() ,active()" class="active btn btn-ghost bg-[#ddd] hover:bg-[#FF1F3D] hover:text-white">All</button></div>
             
         </div>
 
