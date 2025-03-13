@@ -15,6 +15,8 @@ const active = (id = 'all') => {
 // category
 
 const fetchCategories = () => {
+    const wrapper = document.getElementById('video-wrapper');
+    wrapper.innerHTML = `<div class="col-span-4 text-center my-10"><span class="loading loading-dots  loading-xl"></span></div>`
 
     fetch('https://openapi.programming-hero.com/api/phero-tube/categories').then(response => response.json()).then(data => showCategories(data))
 }
@@ -23,7 +25,9 @@ fetchCategories();
 
 
 const showCategories = data => {
+
     const wrapper = document.getElementById('category-wrapper');
+    
     data.categories.forEach(cat => {
         const div = document.createElement('div')
         div.innerHTML = `<button onclick="fetchByCat(${cat.category_id}),active(${cat.category_id})" id="${cat.category_id}" class="cat-btn btn btn-ghost bg-[#ddd] hover:bg-[#FF1F3D] hover:text-white">${cat.category}</button>
@@ -36,9 +40,24 @@ const showCategories = data => {
 // Show videos on home page
 
 const fetchVideos = () => {
+    const wrapper = document.getElementById('video-wrapper');
+    wrapper.innerHTML = `<div class="col-span-4 text-center my-10"><span class="loading loading-dots  loading-xl"></span></div>`
 
-    fetch('https://openapi.programming-hero.com/api/phero-tube/videos').then(response => response.json()).then(data => showVideos(data));
 
+    fetch(`https://openapi.programming-hero.com/api/phero-tube/videos?title=`).then(response => response.json()).then(data => showVideos(data));
+
+        document.getElementById('search').addEventListener('keyup' , ()=> {
+          const searchTitle = document.getElementById('search').value; 
+    
+          const wrapper = document.getElementById('video-wrapper');
+    wrapper.innerHTML = `<div class="col-span-4 text-center my-10"><span class="loading loading-dots  loading-xl"></span></div>`
+          fetch(`https://openapi.programming-hero.com/api/phero-tube/videos?title=${searchTitle}`).then(response => response.json()).then(data => showVideos(data));
+            
+        })
+    
+    
+        
+    
 
 }
 
@@ -66,7 +85,9 @@ const showVideos = (data) => {
                               <h3 class="text-sm font-semibold">${video.title} </h3>
                               <div class="author flex gap-1">
                                 <span class="text-sm">${video.authors[0].profile_name}</span>
-                                <img class="w-5 h-5" src="assets/verified.png" alt="">
+                                ${(video.authors[0].verified == true) ?
+                                 '<img class="w-5 h-5" src="assets/verified.png "  alt=""></img>': "" } 
+                                
                              </div>
 
                              <div>
@@ -75,7 +96,7 @@ const showVideos = (data) => {
                           </div>
                     </div>
 
-                    
+                    <button class="btn btn-soft w-full my-2 btn-primary">Primary</button>
                    
                 </div>
             </div>
@@ -92,13 +113,13 @@ const fetchByCat = async (id) => {
   
 
 
-
+    const wrapper = document.getElementById('video-wrapper');
+    wrapper.innerHTML = `<div class="col-span-4 text-center my-10"><span class="loading loading-dots  loading-xl"></span></div>`
 
     const fetchData = await fetch(`https://openapi.programming-hero.com/api/phero-tube/category/${id}`)
     const data = await fetchData.json();
 
-    wrapper = document.getElementById('video-wrapper');
-    wrapper.innerHTML = "";
+    wrapper.innerHTML = " ";
 
 
     if (data.category.length === 0) {
@@ -153,5 +174,11 @@ const fetchByCat = async (id) => {
     })
 
 }
+
+
+
+
+
+
 
 
