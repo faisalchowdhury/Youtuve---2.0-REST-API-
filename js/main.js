@@ -95,9 +95,7 @@ const showVideos = (data) => {
                              </div>
                           </div>
                     </div>
-
-                    <button class="btn btn-soft w-full my-2 btn-primary">Primary</button>
-                   
+                <button class="btn w-full my-5" onclick="getDetail('${video.video_id}')">Video detail</button>
                 </div>
             </div>
       `
@@ -164,7 +162,7 @@ const fetchByCat = async (id) => {
                           </div>
                     </div>
 
-                    
+                <button class="btn w-full my-5" onclick="getDetail('${cat.video_id}')">Video detail</button>    
                    
                 </div>
             </div>
@@ -176,6 +174,41 @@ const fetchByCat = async (id) => {
 }
 
 
+// get video details
+
+
+const getDetail = (id) => {
+ 
+    document.getElementById('open_modal').showModal();
+
+    fetch(`https://openapi.programming-hero.com/api/phero-tube/video/${id}`).then(res => res.json()).then(data => showVideoDetails(data) )
+   
+
+}
+
+const showVideoDetails = (data) => {
+   "use strict"
+    const mainDiv = document.getElementById('video-details');
+
+    mainDiv.innerHTML = `
+    <div class="card bg-base-100 shadow-sm">
+        <figure>
+          <img
+            src="${data.video.thumbnail}"
+            alt="Shoes" />
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">${data.video.title}</h2>
+          <p>${data.video.description}</p>
+          
+        </div>
+      </div>
+  </div>
+
+
+    `
+
+}
 
 
 
